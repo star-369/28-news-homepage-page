@@ -1,0 +1,62 @@
+@use "../../abstracts/mixins" as *;
+
+header {
+  padding: 1.5rem 1rem;
+  nav {
+    img[alt="News logo"] {
+      height: 40px;
+    }
+    input:checked ~ label .open {
+      display: none;
+    }
+    input:checked ~ label .close {
+      display: block;
+    }
+    input:checked ~ div {
+      translate: 0 0;
+    }
+    input:checked ~ .overlay {
+      background: hsla(0, 0%, 0%, 0.5);
+    }
+    .side-navigation {
+      position: fixed;
+      translate: calc(1rem + 100%) 0;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100vh;
+      padding: 5rem 1.5rem;
+      background: var(--off-white);
+      ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0;
+      }
+    }
+  }
+}
+
+@include breakpoint("medium") {
+  header {
+    padding: 1.5rem 0;
+    nav {
+      .open {
+        display: none;
+      }
+      .overlay {
+        display: none;
+      }
+      .side-navigation {
+        position: static;
+        translate: 0;
+        height: auto;
+        width: auto;
+        padding: 0;
+        background: transparent;
+        ul {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}
